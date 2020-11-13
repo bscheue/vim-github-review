@@ -1,0 +1,33 @@
+*github-review.txt*    Load GitHub PR review comments to Vim's quickfix list
+
+
+VIM-GITHUB-REVIEW DOCUMENTATION - Brian Scheuermann
+
+====================================================================
+CONTENTS
+
+    1. Introduction ......... |github-review-intro|
+    2. Commands ............. |github-review-commands|
+    3. To-do ................ |github-review-to-do|
+    4. Changelog ............ |github-review-changelog|
+
+
+====================================================================
+Introduction                                    *github-review-intro*
+
+Load comments from GitHub pull request reviews into Vim's quickfix list.
+
+
+====================================================================
+Commands                                     *github-review-commands*
+
+--------------------------------------------------------------------
+                                          *:LoadGithubReviewComments*
+
+Load comments from pull request review on GitHub for current branch
+and populate the quickfix list with the files, line numbers, and the
+comment along with the user name of the commenter.
+
+
+====================================================================
+Changelog                                   *github-review-changelog*
