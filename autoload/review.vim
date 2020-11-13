@@ -25,6 +25,7 @@ function! review#GetJson()
     call add(qf_entries, entry)
   endfor
   call setqflist(qf_entries, 'a')
+  execute 'cd ' . system('git rev-parse --show-toplevel')
   copen
 endfunction
 
