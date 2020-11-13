@@ -2,7 +2,15 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! review#GetJson()
+  if !executable('gh')
+    echohl ErrorMsg | echo "GitHub CLI (https://cli.github.com/) needs to be installed" | echohl None
+    return
+  endif
   let response = system("gh api repos/:owner/:repo/pulls/$(gh pr list -L 1000 | grep \"$(git branch --show-current)\" | awk '{print $1;}')/comments")
+  if v:shell_error
+    echohl ErrorMsg | echo "Failed to get PR comments for current branch" | echohl None
+    return
+  endif
   let comments = json_decode(response)
   let qf_entries = []
   call setqflist([], ' ', {'title' : 'review comments'})
