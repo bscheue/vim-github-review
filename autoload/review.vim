@@ -6,7 +6,7 @@ function! review#GetJson()
     echohl ErrorMsg | echo "GitHub CLI (https://cli.github.com/) needs to be installed" | echohl None
     return
   endif
-  let response = system("gh api repos/:owner/:repo/pulls/$(gh pr list -L 1000 | grep \"$(git branch --show-current)\" | awk '{print $1;}')/comments")
+  let response = system("gh api repos/:owner/:repo/pulls/$(gh pr list -L 1000 | grep \"$(git rev-parse --abbrev-ref HEAD)\" | awk '{print $1;}')/comments")
   if v:shell_error
     echohl ErrorMsg | echo "Failed to get PR comments for current branch" | echohl None
     return
